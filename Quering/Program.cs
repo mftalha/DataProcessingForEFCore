@@ -20,18 +20,23 @@ QueringClass context = new();
 #region ToListAsync
 #endregion
 
+/*
 int productId = 5;
 var products = from product in context.Products
                where product.Id > productId
                select product;
 
 productId = 200;
+
 //geciktirilmiş sorgu(yürütme) : buraya kadar sorguyu göndermiyordu. : çünkü daha çağrılmamıştı : diferred execution(ertelenmiş çalışma)
+*/
 #region Foreach
+/*
 foreach (Product product in products) 
 {
     Console.WriteLine(product.ProductName);
 }
+*/
 
 #region Deferred Execution(Ertelenmiş çalışma)
 /*
@@ -57,9 +62,96 @@ foreach (Product product in products)
 #endregion
 #endregion
 #region Çoğul veri getiren sorgulama fonksiyonları
+
+#region ToListAsync
+// Üretilen sorguyu execute ettirmemizi saglayan fonksiyondur => IQueryable -> IEnumarable çevirme işlemi
+// toList , ...
+#endregion
+#region Where
+// oluşturulan sorguya where şartı eklememizi sağlıyan bir fonksiyondur.
+var urunler = context.Products.Where(f => f.ProductName.EndsWith("..."));
+#endregion
+
 #endregion
 #region Tekil veri getiren sorgulama fonksiyonları
+// Yapılan sorguda sade ve sadece tek bir verinin gelmesi amaçlanıyor ise Single ya da SingleOrDefault fonksiyonları kullanılabilir.
+#region SingleAsync
+// Eğer ki, sorgu neticesinde birden fazla veri geliyorsa ya da hiç gelmiyorsa her iki durumda da exception fırlatılır.
+#region Tek kayıt geldiginde
+// Eğer ki sorgu neticesinde birden fazla veri geliyor ise exception fırlatır, hiç veri gelmiyor ise null döner.
+/*
+var product = await context.Products.SingleAsync(f => f.ProductName == "ProductB");
+Console.WriteLine();
+*/
 #endregion
+#region Hiç kayıt gelmediğinde
+// var product = await context.Products.SingleAsync(f => f.ProductName == "ProductK"); // bu şartı saglayan veri olmadığından patlıyor proje burada.
+#endregion
+#region Çok kayıt geldiğinde
+//var product = await context.Products.SingleAsync(f => f.ProductName == "ProductA"); //birden fazla veri geldiği için hata verir.
+#endregion
+#endregion
+
+#region SingleOrDefaultAsync
+// Eğer ki sorgu neticesinde birden fazla veri geliyor ise exception fırlatır, hiç veri gelmiyor ise null döner.
+#region Tek kayıt geldiginde
+/*
+var product = await context.Products.SingleOrDefaultAsync(f => f.ProductName == "ProductB");
+Console.WriteLine();
+*/
+#endregion
+#region Hiç kayıt gelmediğinde
+/*
+ var product = await context.Products.SingleOrDefaultAsync(f => f.ProductName == "ProductK"); // bu şartı saglayan veri olmadığında null döndürür.
+Console.WriteLine();
+*/
+#endregion
+#region Çok kayıt geldiğinde
+//var product = await context.Products.SingleOrDefaultAsync(f => f.ProductName == "ProductA"); //birden fazla veri geldiği için hata verir.
+#endregion
+#endregion
+
+//Not : eğerki ben projemde ilgili özellikten id mesela veritabanında 1 tane olması gerekiyor ve ben buna göre 1 tane veri çekmek istiyor isem SingleAsync - SingleOrDefaultAsync methodları kullanılmalı ; ilgili şartı sağlayan birden fazla veri gelebilir ama ben bunlardan sadece ilkini almak istiyorum der isem de First - FirstOrDefault methotlarını kullanabilirim.
+#region First - FirstOrDefault
+// gelen veri birden fazla iseve kaç adet olursa olsun sadece 1 tanesini döndürür : verilerden.
+#endregion
+
+#region FindAsync
+// önce in memory'e bakar eğerki ilgili veriyi bulamaz ise db'ye gidip sorgulama yapıyor : bu sadece findasync'e özel.
+//Product product = await context.Products.FirstOrDefaultAsync(f => f.Id == 3);
+
+// FindAsync: primary key column'una özel arama yapmamızı sağlayan bir column'dur. üstteki gibi lamda ile yazmamıza gerek yok.
+//Product product = await context.Products.FindAsync(3);
+//Console.WriteLine();
+
+#region Composite Primary key durumu => birden fazla primary key var ise
+
+/*
+ProductPart productPart = await context.ProductParts.FindAsync(1, 2); // birden fazla primary key'i olan tablolar için. FindAsync
+Console.WriteLine();
+*/
+#endregion
+
+#endregion
+
+#region LastAsync
+// son veriyi çekmek için => orderby gereklidir: yoksa hata verir. => ordy by veya  OrderByDescending 'e göre veriyi sıralar sonrasında listenin en arkasında kalan veriyi alır => yani hangi verinin geleceğinde terstenmi, düzmü sıraladığımız önemlidir. => en sonuncu veriyi getirilir.
+// LastAsync => hiç veri gelmiyor ise hata fırlatır , LastOrDefaultAsync => veri gelmez ise null döner
+/*
+var products = await context.Products.OrderByDescending(f => f.ProductName).LastOrDefaultAsync();
+//var products = context.Products.OrderBy(f => f.ProductName).LastAsync(f => f.Id > 4); //şeklinde şart'da verebiliriz.
+Console.WriteLine();
+*/
+#endregion
+
+#region LastOrDefaultAsync
+
+#endregion
+
+#endregion
+
+
+
 #region Diger sorgulama fonksiyonları
 #endregion
 #region Sorgu sonucu dönüşüm fonksiyonları
@@ -70,9 +162,14 @@ public class QueringClass : DbContext
 {
     public DbSet<Product> Products { get; set; }
     public DbSet<Part> Parts { get; set; }
+    public DbSet<ProductPart> ProductParts { get; set; }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=TestDb;Trusted_Connection=True;TrustServerCertificate=True");
+    }
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    { //composite primary key oldugunu belirtiyoruz : HasKey ile ileride anlatılacak.
+        modelBuilder.Entity<ProductPart>().HasKey(up => new { up.ProductId, up.PartId });
     }
 }
 
@@ -88,4 +185,11 @@ public class Part
 {
     public int Id { get; set; }
     public string PartName { get; set; }
+}
+public class ProductPart
+{
+    public int ProductId { get; set; }
+    public int PartId { get; set; }
+    public Product Product { get; set; }
+    public Part Part { get; set; }
 }

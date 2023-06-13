@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Quering.Migrations
 {
     [DbContext(typeof(QueringClass))]
-    partial class QueringClassModelSnapshot : ModelSnapshot
+    [Migration("20230613013731_mig_2")]
+    partial class mig_2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -75,7 +78,7 @@ namespace Quering.Migrations
 
                     b.HasIndex("PartId");
 
-                    b.ToTable("ProductParts");
+                    b.ToTable("ProductPart");
                 });
 
             modelBuilder.Entity("Part", b =>

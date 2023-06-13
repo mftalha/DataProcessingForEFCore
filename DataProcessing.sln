@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataUpdate", "DataUpdate\Da
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataDelete", "DataDelete\DataDelete.csproj", "{47468411-61B3-405B-9919-D04391EED0DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quering", "Quering\Quering.csproj", "{0DBD3A32-6DD7-48BB-9900-D12C1EA1F733}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Quering", "Quering\Quering.csproj", "{0DBD3A32-6DD7-48BB-9900-D12C1EA1F733}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
