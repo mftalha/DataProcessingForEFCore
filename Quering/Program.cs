@@ -230,6 +230,35 @@ Console.WriteLine("");
 */
 #endregion
 #endregion
+#region GroupBy Foksiyonu
+/*
+// Gruplama yapmamızı sağlayan fonksiyondur.
+var datas = await context.Products.GroupBy(f => f.ProductName).Select(f => new
+{
+    Count = f.Count(), //ilgili key'den kaçtane bulunduğu
+    Name = f.Key, //key : guruplandırma filtresi olarak verdiğim veridir : burada => ProductName
+    Price = f.First().Price // price karşılığı budur => egerki groupby yapılan veri key'ine göre birden fazla veri var ise bu verilerden ilkinin price'sini getir. : çünkü key kısmında aynı keyden 1 tanesini gösterecektir. ona karşılık 1 tane price seçmemiz gerekiyor.
+}).ToListAsync();
+Console.WriteLine("");
+*/
+#endregion
+#region Foreach Fonksiyonu
+//Bir sorgulama fonksiyonu değildir!
+// Sorgulama neticesinde elde edilen koleksiyonel veriler üzerinde iterasyonel olarak dönmemizi ve teker teker verileri elde edip işlemler yapabilmemizi sağlayan bir fonksyiondur. foreach döngüsünün metot halidir!
+var products = context.Products;
+foreach(var product in products)
+{
+    Console.WriteLine(product.ProductName);
+}
+//üstteki normal foreach döngüsü
+Console.WriteLine("-------------------------");
+// alttaki foreach fonksiyonun kullanmıdır.
+await context.Products.ForEachAsync(x =>
+{
+    Console.WriteLine(x.ProductName);
+});
+Console.WriteLine();
+#endregion
 
 public class QueringClass : DbContext
 {
