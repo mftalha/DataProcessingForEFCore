@@ -69,7 +69,7 @@ foreach (Product product in products)
 #endregion
 #region Where
 // oluşturulan sorguya where şartı eklememizi sağlıyan bir fonksiyondur.
-var urunler = context.Products.Where(f => f.ProductName.EndsWith("..."));
+//var urunler = context.Products.Where(f => f.ProductName.EndsWith("..."));
 #endregion
 
 #endregion
@@ -149,13 +149,86 @@ Console.WriteLine();
 #endregion
 
 #endregion
-
-
-
 #region Diger sorgulama fonksiyonları
+#region LongCountAsync
+/*
+//olusturulan sorgunun exute edilmesinde neticesinde kaç adet satırın elde edileceğini sayısal olark(long) bizlere bildiren fonksiyondur.
+// int deger aralıgı 2 minyol .. bişeydi daha fazla deger var ise count'unu bu şekilde çekebiliriz.
+var product = await context.Products.LongCountAsync();
+Console.WriteLine();
+*/
+#endregion
+
 #endregion
 #region Sorgu sonucu dönüşüm fonksiyonları
+// Bu fonksiyonlar ile sorgu neticesinde elde edilen verileri isteğimiz doğrultusunda farklı türlerde projecsiyon edebiliyoruz.
+#region ToDictionaryAsync
+/*
+// veritabanından elde ettiğimz verileri dictionary olarak elde etmek istediğimzde kullanırız.
+// TOList : gelen verielri liste formatında tutacaktır ; dictinory : ToDictionary olarak tutacaktır
+var product =  context.Products.GroupBy(f => f.ProductName).ToDictionary(f=> f.Key, f=> f.First().Price);//.ToDictionaryAsync(f => f.ProductName, f => f.Price);
+var product2 =  context.Products.GroupBy(f => f.ProductName).ToDictionary(f=> f.Key, f=> f.Last().Price);//.ToDictionaryAsync(f => f.ProductName, f => f.Price);
+// yukarıda : groupby ile kullandım bunun sebibi => toDictionary key alanına verdiğim degerin tekrar yapmasından dolayı dictinory'in key alanına aynı ismi 2 kez atıyamazsın hatası veriyor buradada o yüzden bu şekilde 1 column'un 1 kere gelmesini saglıyoruz ve ardından : tekrar yapan row'da first veya last ile : ilk veya son tekrar yapan verinin bilgilerine erişebiliyoruz.
+var product3 = context.Products.ToDictionary(f => f.Id, f => f.ProductName);
+Console.WriteLine();
+*/
+#endregion
+#region ToArrayAsync
+/*
+// olusturulan sorguyu dizi olarak elde eder
+// ToList ile muadil amaca hizmet eder. Yani sorguyu execute eder lakin gelen sonucu entity dizi olarak elde ederiz
+var products = await context.Products.ToArrayAsync();
+Console.WriteLine("");
+*/
+#endregion
 
+#region Select
+// Select fonksiyonunun işlevsel olarak birden fazla davranışı söz konusudur,
+/*
+// 1. Select fonksiyonu, generate edilecek sorgunun çekilecek kolonlarını ayarlamamızı sağlamaktadır.
+// model'de sadece verdiğimiz alanları doldurur. modeldeki diğer alanalara null değeri atanır.
+var product = context.Products.Select(f => new Product 
+{
+    Id = f.Id,
+    ProductName = f.ProductName
+}).ToList();
+Console.WriteLine();
+*/
+/*
+//2. Select fonksiyonu, gelen verileri farklı türlerde karşılamamızı sağlar. T,anonim
+//anonim olarak atama yapabiliriz. => bir modele eşlemeden direk anonim bir model oluşturup atama => performans olarak iyi
+var products = await context.Products.Select(f => new
+{
+    Id = f.Id,
+    Name = f.ProductName
+}).ToListAsync();
+Console.WriteLine("");
+*/
+/*
+//3. Select fonksiyonu, harici bir modele eşitleyebilirim gelen verileri.
+var products = await context.Products.Select(p => new ProductDetail
+{
+    Id= p.Id,
+    Price = p.Price,
+}).ToListAsync();
+Console.WriteLine("");
+*/
+#endregion
+#region SelectMany
+/*
+// select ile aynı amaca hizmet eder lakin, ilişkisel tablolar neticesinde gelen koleksiyonel verileri de tekilleştirip projeksion etmemizi sağlar.
+
+//p.Parts diye => product tablosu ile ilişkili olan Part entity'e erişim saglıyoruz => p.Parts deme sebebimiz 2 tablo arasıbda ikişki verir iken product tablosundan Parts ismi ile ilgili tabloyu ilişkilendirmemiz.
+// p => Product entites'ini temsil eder; x => Part entites'ini temsil eder.
+var products = await context.Products.Include(p => p.Parts).SelectMany(p => p.Parts, (p, x) => new
+{
+    p.Id,
+    p.Price,
+    x.PartName
+}).ToListAsync();
+Console.WriteLine("");
+*/
+#endregion
 #endregion
 
 public class QueringClass : DbContext
@@ -192,4 +265,10 @@ public class ProductPart
     public int PartId { get; set; }
     public Product Product { get; set; }
     public Part Part { get; set; }
+}
+
+public class ProductDetail
+{
+    public int Id { get; set; }
+    public float Price { get; set; }
 }
