@@ -180,8 +180,10 @@ Console.WriteLine();
 
 #region GetDatabaseValues Metodu
 // db'deki ilgili verinin karşılığını => db'ye gidip tekrar getirir => base halini elde ederiz ilgili verinin.
+/*
 var _product = await context.Entry(product).GetDatabaseValuesAsync();
 Console.WriteLine(  );
+*/
 #endregion
 
 #endregion

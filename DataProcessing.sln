@@ -9,7 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataDelete", "DataDelete\Da
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Quering", "Quering\Quering.csproj", "{0DBD3A32-6DD7-48BB-9900-D12C1EA1F733}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChangeTracker", "ChangeTracker\ChangeTracker.csproj", "{B083E3CE-C6B6-4E2A-AD3C-FE7EB55C0415}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChangeTracker", "ChangeTracker\ChangeTracker.csproj", "{B083E3CE-C6B6-4E2A-AD3C-FE7EB55C0415}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tracking", "Tracking\Tracking.csproj", "{F089EA2B-6F07-4DAC-9BB3-2C3F01F80B3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Relationships", "Relationships\Relationships.csproj", "{0DDA5B0D-4FCF-4F44-9FE3-FBFB06803116}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{B083E3CE-C6B6-4E2A-AD3C-FE7EB55C0415}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B083E3CE-C6B6-4E2A-AD3C-FE7EB55C0415}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B083E3CE-C6B6-4E2A-AD3C-FE7EB55C0415}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F089EA2B-6F07-4DAC-9BB3-2C3F01F80B3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F089EA2B-6F07-4DAC-9BB3-2C3F01F80B3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F089EA2B-6F07-4DAC-9BB3-2C3F01F80B3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F089EA2B-6F07-4DAC-9BB3-2C3F01F80B3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DDA5B0D-4FCF-4F44-9FE3-FBFB06803116}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DDA5B0D-4FCF-4F44-9FE3-FBFB06803116}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DDA5B0D-4FCF-4F44-9FE3-FBFB06803116}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DDA5B0D-4FCF-4F44-9FE3-FBFB06803116}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
