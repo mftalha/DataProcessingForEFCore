@@ -75,6 +75,27 @@ ConfigurationDbContext context = new();
 // Küsüratlı sayılar'da bir kesinlik belirtmemizi sağlayan ve noktanın hanesini bildirmemizi sağlayan bir yapılanmadır.
 #endregion
 
+#region Unicode | IsUnicode
+// kolon içerisinde unicode karekterler kullanılacakise bu yapılandırmadan istifade edilebilir.
+
+#endregion
+
+#region Comment - HasComment
+// EF Core üzerinden oluşturulmuş olan veritabanı nesneleri üzerinde bir açıkalma/yorum yapmak istiyorsak Comment'i kullanabilriz,
+// mssql'de tablo için yorum bakma : Database - Tablo -  sag tık - properties - sol seçeneklerden Extended Properties - MS_Description alanının valuesinde ilgili açıklama yazacaktır.
+// mssql'de column için yorum bakma : Database - Tablo - columns - ilgili satır'a sag tık - properties - sol seçeneklerden Extended Properties - MS_Description alanının valuesinde ilgili açıklama yazacaktır.
+#endregion
+
+#region ConcurrencyCheck - IsConcurrencyToken
+// İleride/Sonraki derslerde veri tutarlılığı ile ilgili bir ders yapacağız.
+// Bu derste bir satırdaki verinini bütünsel olarak tutarlılığını sağlıyacak bir concurrency token yapılanmasından bahsedeceğiz.
+#endregion
+
+#region InverseProperty
+// {Inverse : Ters }
+// iki entity arasında birden fazla ilkişki var ise eğer bu ilişkilerin hangi navigation  property'ler üzerinden olacağını ayarlamamızı sağlayan bir configurasyondur.
+#endregion
+
 #endregion
 
 
@@ -89,18 +110,22 @@ class Person
     public int DId { get; set; } // DepartmentId
 
     //[Column("Adi", TypeName = "metin", Order = 7)] // TypeName = string'di ; olusturulurken :7. sırada olusturulsun
+    //[Unicode]
     public string Name { get; set; }
     //[Required]
     //[MaxLength(13)]
     //[StringLength(14)]
     public string Surname { get; set; } // string? => nullable özelliği kazandırırız bu şekilde.
-    [Precision(5,3)] // 5 sayıdan fazla hane tutmayacak ; noktan sonrada 3 hane tutacak => solda 2 + sagda 3 = 5
+    //[Precision(5,3)] // 5 sayıdan fazla hane tutmayacak ; noktan sonrada 3 hane tutacak => solda 2 + sagda 3 = 5 : 12,345
+    //[Comment("Bu şu işe yaramaktadır.")]
     public decimal Salary { get; set; }
     // NotMapped denemesi için olusturuldu
     //[NotMapped]
     //public string MyPropert { get; set; }
     //[Timestamp]
     //public byte[] RowVersion { get; set; }
+    //[ConcurrencyCheck]
+    //public int ConcurrencyCheck { get; set; }
     public DateTime CreatedDate { get; set; }
     public Department Department { get; set; }
 }
@@ -171,14 +196,49 @@ class ConfigurationDbContext : DbContext
         //    .Property(p => p.Surname)
         //    .HasMaxLength(13);
         #endregion
+        #region HasPrecision
+        //modelBuilder.Entity<Person>()
+        //    .Property(p => p.Salary)
+        //    .HasPrecision(5, 3);
+        // 5 sayıdan fazla hane tutmayacak ; noktan sonrada 3 hane tutacak => solda 2 + sagda 3 = 5 : 12,345
+        #endregion
+        #region IsUnicode
+        modelBuilder.Entity<Person>()
+            .Property(p => p.Name)
+            .IsUnicode();
+        #endregion
+        #region HasComment
+        //modelBuilder.Entity<Person>()
+        //    .HasComment("Bu tablo şuna yaramaktadır.")
+        //    .Property(p => p.Name)
+        //    .HasComment("Bu kolon şuna yaramaktadır.");
+        #endregion
+        #region IsConcurrencyToken
+        //modelBuilder.Entity<Person>()
+        //    .Property(p => p.ConcurrencyCheck)
+        //    .IsConcurrencyToken();
+        #endregion
     }
 }
 
-public class Flight
-{
+//public class Flight
+//{
+//    //{ departure : kalkış ; arrival : varış}
+//    public int FlightID { get; set; }
+//    public int DepartureAirportId { get; set; }
+//    public int ArrivalAirportId { get; set; }
+//    public string Name { get; set; }
+//    public Airport DepartureAirport { get; set; }
+//    public Airport ArrivalAirport { get; set; }
+//}
+//public class Airport
+//{
+//    public int AirportID { get; set; }
+//    public string Name { get; set; }
 
-}
-public class Airport
-{
+//    [InverseProperty(nameof(Flight.DepartureAirport))]
+//    public virtual ICollection<Flight> DepartingFlights { get; set; }
 
-}
+//    [InverseProperty(nameof(Flight.ArrivalAirport))]
+//    public virtual ICollection<Flight> ArrivingFlights { get; set; }
+//}
