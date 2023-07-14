@@ -98,20 +98,119 @@ ConfigurationDbContext context = new();
 
 #endregion
 
+#region Configurations | Fluent API
 
+#region Composite Key
+//Tablolarda birden fazla kolonu kümalitf olarak primary key yapmak istiyr isek buna composite key denir
+#endregion
+
+#region HasDefaultSchema
+// EF Core üzerinden inşa edilen herhangi bir veritabanı nesnesi default olarak dbo şemasına sahiptir. Bunu özellştirebilmek için configurasyondur.
+#endregion
+
+#region Property
+
+#region HasDefaultValue
+// Tablodaki herhangi bir alan'a defer gönderilmediğinde defult olarak hangi değerin alınacağını belirler.
+#endregion
+
+#region HasDefaultValueSql
+// Tablodaki herhangi bir alan'a defer gönderilmediğinde defult olarak hangi sql cümleciğinden değerin alınacağını belirler.
+#endregion
+
+#endregion
+
+#endregion
+
+#region HasComputedColumnSql
+// {computed: hesaplanmış}
+// Tablolarda' ki birden fazla kolonu işleyerek değerini oluşturan kolonlara Computed column denmektedir. Ef Core üzerinde bu tarz computed column oluşturabilmek için kullanılan bir yapılandırmadır.
+#endregion
+
+#region HasConstraintName
+// ef core üzerinden oluşturulan constraintlere default isim yerine özelleştirilmiş bir isim verebilmek için kullanılan yapılandırmadır.
+#endregion
+
+#region HasData
+// {Seed : Tohum}
+// sonraki derslerimizde Seed Data isimli bir konuyu incelecyeceğiz bu konuda migrate sürecinde veritabnını inşa eder iken bir yandan da yazılım üzerinden hazır veriler oluşturmak istiyor isek eğer bu konun yöntemini inceleyeceğiz.
+// işte HasData konfigurasyonu bu operasyonun yapılandırma ayağıdır.
+// HasData ile migrate sürecinde oluşturulacak olan verilerin pk olan id kolonlarına iradeli bir şekilde değerlerin girilmesi zorunludur.
+#endregion
+
+#region HasDiscriminator
+// {discriminator : ayrımcı}
+// İleride entityler arasında kalıtımsal ilişkilerin olduğu TPT VE TPH isminde kopnuları inceliyor olacağız. İşte bu konularla ilgili yapılandırmalarımız HasDiscriminator ve HasValue fonksiyonlardır.
+
+#region HasValue
+
+#endregion
+
+//A a = new()
+//{
+//    X = "A dan",
+//    Y = 1
+//};
+
+//B b = new()
+//{
+//    X = "B den",
+//    Z = 2
+//};
+
+//Entity entity = new()
+//{
+//    X = "Entity'den"
+//};
+
+//await context.As.AddAsync(a);
+//await context.Bs.AddAsync(b);
+//await context.Entities.AddAsync(entity);
+
+//await context.SaveChangesAsync();
+
+#endregion
+
+#region HasField
+// Backing field özelliğini kullanmamızı sağlayan bir yapılanmadır.
+#endregion
+
+#region HasNoKey
+// Normal şartlarda ef core'da tüm entitylerin primary key colomn'u olmak zorundadır. Eğerki entity'de pk kolonu olmıyacaksa bunun bildirilmesi gerekmektedir! işte bunun için kullanılan fonksiyondur.
+#endregion
+
+#region HasIndex
+// Sonraki derslerde ef core üzerinden Index yapılanmasını detaylı olarak inceliyor olacağız.
+// bu yapılanamya dair configurasyonlarımız HasIndex ve Index attribute'dur.
+#endregion
+
+#region HasQueryFilter
+// ileride göreceğimiz Global Query Query Filter dersimizin yapılandırmasıdır.
+// temeldeki görevi bir entity'e karşılık uygulama bazında global bir filtre koymaktır.
+#endregion
+
+#region DatabaseGenerated - ValueGeneratedOnAddOrUpdate, ValueGeneratedOnAdd, ValueGeneratedNever
+
+#endregion
 
 //[Table("Kisiler")]
 class Person
 {
     //[Key]
     public int Id { get; set; }
+    //public int Id2 { get; set; }
 
     //[ForeignKey(nameof(Department))]
-    public int DId { get; set; } // DepartmentId
+    public int DepartmentId { get; set; } // DepartmentId
 
     //[Column("Adi", TypeName = "metin", Order = 7)] // TypeName = string'di ; olusturulurken :7. sırada olusturulsun
     //[Unicode]
-    public string Name { get; set; }
+
+    //public string Name { get; set; }
+    public string _name;
+    public string Name { get => _name; set => _name = value; }
+
+    
     //[Required]
     //[MaxLength(13)]
     //[StringLength(14)]
@@ -130,6 +229,14 @@ class Person
     public Department Department { get; set; }
 }
 
+class Exampe
+{
+    public int Id { get; set; }
+    public int X { get; set; }
+    public int Y { get; set; }
+    public int Computed { get; set; }
+}
+
 class Department
 {
     public int Id { get; set; }
@@ -137,10 +244,30 @@ class Department
     public ICollection<Person> Persons { get; set; }
 }
 
+class Entity
+{
+    public int Id { get; set; }
+    public string X { get; set; }
+}
+
+class A : Entity
+{
+    public int Y { get; set; }
+}
+
+class B : Entity
+{
+    public int Z { get; set; }
+}
+
 class ConfigurationDbContext : DbContext 
 {
+    //public DbSet<Entity> Entities { get; set; }
+    //public DbSet<A> As { get; set; }
+    //public DbSet<B> Bs { get; set; }
     public DbSet<Person> Persons { get; set; }
     public DbSet<Department> Departments { get; set; }
+    public DbSet<Exampe> Exampes { get; set; }
     //public DbSet<Flight>Flights { get; set; }
     //public DbSet<Airport> Airports { get; set; }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -217,6 +344,93 @@ class ConfigurationDbContext : DbContext
         //modelBuilder.Entity<Person>()
         //    .Property(p => p.ConcurrencyCheck)
         //    .IsConcurrencyToken();
+        #endregion
+        #region CompositeKey
+        //modelBuilder.Entity<Person>()
+        //    .HasKey(p => new { p.Id, p.Id2});
+        #endregion
+        #region HasDefaultSchema
+        //modelBuilder.HasDefaultSchema("ahmet");
+        #endregion
+        #region Property
+        #region HasDefaultValue
+        //modelBuilder.Entity<Person>()
+        //    .Property(p => p.Salary)
+        //    .HasDefaultValue(100);
+        #endregion
+        #region HasDefaultValueSql
+        //modelBuilder.Entity<Person>()
+        //    .Property(p => p.CreatedDate)
+        //    .HasDefaultValueSql("GETDATE()");// GETDATE() : sql'de o anki tarihi çağırma
+        #endregion
+        #endregion
+        #region HasComputedColumnSql
+        //modelBuilder.Entity<Exampe>()
+        //    .Property(p => p.Computed)
+        //    .HasComputedColumnSql("[X] + [Y]");
+        #endregion
+        #region HasConstraintName
+        //modelBuilder.Entity<Person>()
+        //    .HasOne(p => p.Department)
+        //    .WithMany(d => d.Persons)
+        //    .HasForeignKey(p => p.DepartmentId)
+        //    .HasConstraintName("ahmet");
+        #endregion
+        #region HasData
+
+        //modelBuilder.Entity<Department>()
+        //    .HasData(
+        //    new Department()
+        //    {
+        //        Id = 1,
+        //        Name = "Department A"
+        //    });
+
+        //modelBuilder.Entity<Person>()
+        //    .HasData(
+        //    new Person{
+        //        Id = 1,
+        //        DepartmentId = 1,
+        //        Name = "Ahmet",
+        //        Surname = "Yılmaz",
+        //        Salary = 100,
+        //        CreatedDate = DateTime.Now,
+        //    },
+        //    new Person{
+        //        Id=2,
+        //        DepartmentId = 1,
+        //        Name = "mehmet",
+        //        Surname = "ucar",
+        //        Salary = 200,
+        //        CreatedDate = DateTime.Now,
+        //    }
+        //    );
+        #endregion
+        #region HasDiscriminator
+        //modelBuilder.Entity<Entity>()
+        ////.HasDiscriminator<string>("Ayirici"); // ayırma için kendi olsuturdugu colomn adını değiştiriyoruz [default: [Discriminator]] ; string dediğimde zaten default olarak bu colun string'dir : hangi entity'den veri eklendi ise onun ismini tutuyor : biz'de burda belirtiyoruz yeni isim ve type
+        //.HasDiscriminator<int>("Ayirici") // olsuturuan colomn int olsun
+        //.HasValue<A>(1) // A entityînden veri geldiğinde 1 yazsın
+        //.HasValue<B>(2)
+        //.HasValue<Entity>(3);
+
+        #endregion
+        #region HasField
+        //modelBuilder.Entity<Person>()
+        //    .Property(p => p.Name)
+        //    .HasField(nameof(Person._name));
+        #endregion
+        #region HasNoKey
+        //modelBuilder.Entity<Exampe>()
+        //    .HasNoKey();
+        #endregion
+        #region HasIndex
+        //modelBuilder.Entity<Person>()
+        //    .HasIndex(p => new { p.Name, p.Surname });
+        #endregion
+        #region HasQueryFilter
+        //modelBuilder.Entity<Person>()
+        //    .HasQueryFilter(p => p.CreatedDate.Year == DateTime.Now.Year);
         #endregion
     }
 }
