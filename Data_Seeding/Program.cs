@@ -3,6 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 Console.WriteLine("Hello, World!");
 
+DataSeedDbContext context = new();
+// Seed Data'lar migrationların dışında eklenmesi ve değiştirilmesi beklenemeyen durumlar için kullanılan bir özelliktir.
+
 // { seed: tohum }
 #region Data Seeding Nedir?
 // EF Core ile inşa edilen veritabanı içersinde veritabanı nesneleri olabileceği gibi'de verilerin'de migrate sürecinde üretilmesini isteyebilririz.
@@ -21,11 +24,11 @@ Console.WriteLine("Hello, World!");
 #endregion
 
 #region İlişkisel Tablolar için Seed Data Ekleme
-
+// İlişkisel senaryolarda dependent table'a veri eklerken varsa foreign key kolonunun propertysi varsa eğer ona ilişkisel değerini vererek ekleme işlemini yapıyoruz.
 #endregion
 
 #region Seed Datanın Primary Key'ini değiştirme
-
+// Eğer ki migrate edilen herhangi bir data sonrasında pk değiştirilirse bu data ile varsa ilişlkisel başka veriler onlara cascade davranışı sergilenecektir.
 #endregion
 
 class Post
@@ -42,20 +45,33 @@ class Blog
     public string Url { get; set; }
     public ICollection<Post> Posts { get; set; }
 }
-class DataSendDbContext : DbContext
+class DataSeedDbContext : DbContext
 {
     public DbSet<Post> Posts { get; set; }  
     public DbSet<Blog> Blogs { get; set; }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=DataSendDb;Trusted_Connection=True;TrustServerCertificate=True");
+        optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=DataSeedDb;Trusted_Connection=True;TrustServerCertificate=True");
     }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        #region Seed Data Ekleme
+
         modelBuilder.Entity<Blog>()
             .HasData(
                 new Blog() { Id = 1, Url = "www.talhasatir.com/blog" },
                 new Blog() { Id = 2, Url = "www.talhasatir.com/blog" }
             );
+        #endregion
+
+        #region İlişkisel Tablolar için Seed Data Ekleme
+        modelBuilder.Entity<Post>()
+            .HasData(
+            new Post() { Id = 1, BlogId = 1, Title = "A", Content ="..."},
+            new Post() { Id = 2, BlogId = 1, Title = "B", Content ="..."},
+            new Post() { Id = 3, BlogId = 2, Title = "B", Content ="..."}
+            );
+        #endregion
+        
     }
 }
