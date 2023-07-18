@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using Microsoft.EntityFrameworkCore;
 
+// sadece concrate class lar için tablo oluişturulur. Concrate olmayıp miras alınan soyut class lar için tablo oluşturulmaz. Miras alınan veriler direk her tablonun kendi içersindedir.
 Console.WriteLine("Hello, World!");
 TablePerConcrateDbContext context = new();
 
