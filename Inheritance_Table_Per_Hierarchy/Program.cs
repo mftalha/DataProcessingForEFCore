@@ -30,29 +30,63 @@ InheritanceTablePerHierarchyDbContext context = new();
 // ardından HasDiscriminator<string>("ayiraci"); fonksiyonu ile özelleitirilmeli
 #endregion
 
-
-#region Discriminator Değerleri Nasıl değerlendirilir?
-// 29:17
+#region Discriminator Değerleri Nasıl değerlendirilir? :türü
+// yine hiyerarşinin başındaki entity konfigirasyonellerine gelip, HasDiscriminator fonksiyonu ile özelleştirmede bulunarak ardından HasValue fonksiyonu ile hangi entity'e karşılık hangi değerin girileceğini belirtilen türde ifade edebiliriz.
 #endregion
 
+//Employee employee = new() { Name = "Talha", Surname = "Satir" };
+//await context.Employees.AddAsync(employee);
+//await context.SaveChangesAsync();
+
 #region TPH'da veri ekleme
+// Davranışların hiçbirinde veri eklerken, silerken, güncellerken vs. normal işlemlerin dışında bir işlem yapılmaz.
+// hangi davranışı kullanıyor isek ef core ona göre arkaplanda modellemeyi gerçekleştirecektir.
+//Employee e1 = new() { Name = "Talha", Surname = "Satir", Department = "Developer" };
+//Employee e2 = new() { Name = "Uzay", Surname = "uCAR", Department = "Developer2" };
+//Customer c1 = new() { Name = "Uzay", Surname = "Deniz", CompanyName = "Cus1" };
+//Customer c2 = new() { Name = "Şuayip", Surname = "XYZ", CompanyName = "Cus2" };
+//Technician t1 = new() { Name = "Rıfkı", Surname = "gol", Department = "Muhasebe", Branch = "sofor" };
+
+//await context.Employees.AddAsync(e1);
+//await context.Employees.AddAsync(e2);
+//await context.Customers.AddAsync(c1);
+//await context.Customers.AddAsync(c2);
+//await context.Technicians.AddAsync(t1);
+//await context.SaveChangesAsync();
 
 #endregion
 
 #region Tph'da veri silme
+// TPH davranışında silme operasyonu yine entity üzerinden gerçekleştirilşir.
+//Employee e1 = await context.Employees.FindAsync(3);
+//context.Employees.Remove(e1);
+//await context.SaveChangesAsync();
+
+// customerların hepsini sil.
+//var customers = await context.Customers.ToListAsync(); 
+//context.Customers.RemoveRange(customers);
+//await context.SaveChangesAsync();
 
 #endregion
 
 #region TPH'da Veri güncelleme
+// tph davranışında güncelleme işlemi yine entity üzerinden gerçekleştirilir.
 
+//Employee e1 = await context.Employees.FindAsync(8);
+//e1.Name = "A";
+//await context.SaveChangesAsync();
 #endregion
 
 #region TPH'da Veri sorgulama
-
+// Veri sorgulama operasyonu bilinen DbSet propertsi üzerinden sorgulamadır. Ancak burada dikkat edilemsi gereken bir husus vardır. o da şu;
+var employees = await context.Employees.ToListAsync();
+//var techs = await context.Technicians.ToListAsync();
+// kalıtımsal ilişkiye göre yapılan orgulamada üst sınıf alt sınıftaki verileride kapsamaktadır. O yüzden üst sınıfların sorgulamalarında alt sınıfların verileride gelecektir buna dikkat edilmelidir.
+// sorgulama süreçlerinde ef core generate edilen sorguya bir where şartı eklemektedir.
 #endregion
 
 #region Farklı Entity'ler de aynı isimde sütunların olduğu durumlar
-
+// Entitylerde mükerrer kolonlar olabilişr. Bu kolomnları ef core isimsel olarak özelleştirip ayıracaktır.
 #endregion
 
 #region IsComplete Konfigürasyonu
@@ -72,10 +106,12 @@ class Employee : Person
 }
 class Customer : Person
 {
+    public int A { get; set; }
     public string? CompanyName { get; set; }
 }
 class Technician : Employee
 {
+    public int A { get; set; }
     public string? Branch { get; set; }
 }
 
@@ -91,7 +127,18 @@ class InheritanceTablePerHierarchyDbContext : DbContext
     }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Person>()
-            .HasDiscriminator<string>("ayiraci");// Discriminator kolonun type ve ismini değiştirebilriiz.
+        //modelBuilder.Entity<Person>()
+        //    .HasDiscriminator<string>("ayiraci");// Discriminator kolonun type ve ismini değiştirebilriiz.
+
+        #region Discriminator Değerleri Nasıl değerlendirilir? :türü
+
+        //modelBuilder.Entity<Person>()
+        //    .HasDiscriminator<string>("ayirici")
+        //    .HasValue<Person>("A")
+        //    .HasValue<Employee>("B")
+        //    .HasValue<Customer>("C")
+        //    .HasValue<Technician>("D");
+
+        #endregion
     }
 }
