@@ -43,6 +43,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inheritance_Table_Per_Type"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inheritance_Table_Per_Concrate_Type", "Inheritance_Table_Per_Concrate_Type\Inheritance_Table_Per_Concrate_Type.csproj", "{E7CCD884-1D55-4CE4-8EC5-8D4841B040B8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Constraints", "Constraints\Constraints.csproj", "{CF9237E3-3B0C-4F59-AD70-9C6E4C73BB96}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -129,6 +131,10 @@ Global
 		{E7CCD884-1D55-4CE4-8EC5-8D4841B040B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7CCD884-1D55-4CE4-8EC5-8D4841B040B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7CCD884-1D55-4CE4-8EC5-8D4841B040B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF9237E3-3B0C-4F59-AD70-9C6E4C73BB96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF9237E3-3B0C-4F59-AD70-9C6E4C73BB96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF9237E3-3B0C-4F59-AD70-9C6E4C73BB96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF9237E3-3B0C-4F59-AD70-9C6E4C73BB96}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
