@@ -5,6 +5,7 @@ Console.WriteLine("Hello, World!");
 TablePerTypeDbContext context = new();
 
 // TPT : Maliyet açısından TPH'ye göre daha maliyetlidir ama kullanımsal doğruluk açısından(1 tabloda 1 entity verisi tutma) daha doğrudur.
+// Table Per Type : ilişkisel her entity için ayrı bir tablo olusturma ve ilişkili veriler : iliskili oldugu her tabloya eklensin ama iliskili verilerin id leri aynı olmalıdır.
 
 #region Table Per Type (TPT) Nedir?
 // Entitylerin aralarında kalıtımsal ilişkiye sahip olduğu durumlarda her bir türe/entitye/tip/referans karşılık bir tablo generate eden davranıştır.
