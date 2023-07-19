@@ -39,13 +39,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data_Seeding", "Data_Seedin
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Inheritance_Table_Per_Hierarchy", "Inheritance_Table_Per_Hierarchy\Inheritance_Table_Per_Hierarchy.csproj", "{9B595FE4-7A80-4C32-98D7-72787E90EA05}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inheritance_Table_Per_Type", "Inheritance_Table_Per_Type\Inheritance_Table_Per_Type.csproj", "{D14326E6-4037-4C79-93E9-CCEF7AF15320}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Inheritance_Table_Per_Type", "Inheritance_Table_Per_Type\Inheritance_Table_Per_Type.csproj", "{D14326E6-4037-4C79-93E9-CCEF7AF15320}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inheritance_Table_Per_Concrate_Type", "Inheritance_Table_Per_Concrate_Type\Inheritance_Table_Per_Concrate_Type.csproj", "{E7CCD884-1D55-4CE4-8EC5-8D4841B040B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Inheritance_Table_Per_Concrate_Type", "Inheritance_Table_Per_Concrate_Type\Inheritance_Table_Per_Concrate_Type.csproj", "{E7CCD884-1D55-4CE4-8EC5-8D4841B040B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Constraints", "Constraints\Constraints.csproj", "{CF9237E3-3B0C-4F59-AD70-9C6E4C73BB96}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Constraints", "Constraints\Constraints.csproj", "{CF9237E3-3B0C-4F59-AD70-9C6E4C73BB96}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Indexes", "Indexes\Indexes.csproj", "{C925B288-B3D0-4D5E-BE2C-202597B76648}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Indexes", "Indexes\Indexes.csproj", "{C925B288-B3D0-4D5E-BE2C-202597B76648}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sequences", "Sequences\Sequences.csproj", "{D2AFF70B-5CA5-4896-B8E9-2B98B17BAC01}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -141,6 +143,10 @@ Global
 		{C925B288-B3D0-4D5E-BE2C-202597B76648}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C925B288-B3D0-4D5E-BE2C-202597B76648}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C925B288-B3D0-4D5E-BE2C-202597B76648}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2AFF70B-5CA5-4896-B8E9-2B98B17BAC01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2AFF70B-5CA5-4896-B8E9-2B98B17BAC01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2AFF70B-5CA5-4896-B8E9-2B98B17BAC01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2AFF70B-5CA5-4896-B8E9-2B98B17BAC01}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
