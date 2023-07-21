@@ -105,6 +105,42 @@ LoadingRelatedDataDbContext context = new();
 
 #region Explicit Loading
 // {Explicit : açık - belirgin}
+// oluşturulan sorguya eklenecek verilerin şartlara bağlı bir şekilde/ihtiyaçlara istinaden yüklnemesini sağlyan bir yaklaşımdır.
+
+// ismi  x' se bunu yap
+//var employee = await context.Employees.Include(e => e.Orders).FirstOrDefaultAsync(e => e.Id == 2);
+
+//// profesyonel olmayan şekilde yukarıdaki böyle olabilir.
+//var employee = await context.Employees.FirstOrDefaultAsync(e => e.Id == 2);
+//if (employee.Name == "Gençay")
+//{
+//    await context.Orders.Where(o => o.EmployeeId == employee.Id).ToListAsync();
+//}
+
+#region Reference
+// Expliclit loading sürecinde ilişkisel olarak tabloya eklenmek istenen yablonun navigation properysi eğer ki tekil bir türse bu tabloyu referance ile sorguyu ekleyebilmekteyiz.
+//var employee = await context.Employees.FirstOrDefaultAsync(e => e.Id == 2 ); // bu satırda employee içersinde region ilişki null iken
+//await context.Entry(employee).Reference(e => e.Region).LoadAsync(); // bu satırdan sonra artık employee içerisindeki ilişkili region'a erişim sağlayabiliyoruz. : aynı referance üzerinden
+
+#endregion
+
+#region Collection
+// Expliclit loading sürecinde ilişkisel olarak tabloya eklenmek istenen yablonun navigation properysi eğer ki çoğul/koleksiyonel bir türse bu tabloyu Collection ile sorguyu ekleyebilmekteyiz.
+//var employee = await context.Employees.FirstOrDefaultAsync(e => e.Id == 2);
+//await context.Entry(employee).Collection(e => e.Orders).LoadAsync();
+#endregion
+
+#region Collection'lar da Aggregate Operatör uygulamak.
+// Collection işlemi sonucu dönen sorguya istediğimiz aggragete işlemini uygulayabiliyoruz.
+//var employee = await context.Employees.FirstOrDefaultAsync(e => e.Id == 2);
+//var count = await context.Entry(employee).Collection(e => e.Orders).Query().CountAsync(); // order sayısı
+#endregion
+
+#region Collectionlar'da Filtreleme gerçekleştirmek
+// Collection işlemi sonucu dönen sorguya filtre uygulayabiliyoruz.
+//var employee = await context.Employees.FirstOrDefaultAsync(e => e.Id == 2);
+//var count = await context.Entry(employee).Collection(e => e.Orders).Query().Where(q => q.OrderDate.Date.Day == DateTime.Now.Day).ToListAsync(); // bugünki siparişleri getir
+#endregion
 #endregion
 
 #region Lazy Loading
@@ -159,7 +195,7 @@ class LoadingRelatedDataDbContext : DbContext
 
         #region AutoInclude - EF Core 6
         // employees tablosunu çekerken regions tablosundaki verilerde çek beraberinde
-        modelBuilder.Entity<Employee>().Navigation(e => e.Region).AutoInclude();
+        //modelBuilder.Entity<Employee>().Navigation(e => e.Region).AutoInclude();
         #endregion
     }
 
