@@ -47,9 +47,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Constraints", "Constraints\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Indexes", "Indexes\Indexes.csproj", "{C925B288-B3D0-4D5E-BE2C-202597B76648}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sequences", "Sequences\Sequences.csproj", "{D2AFF70B-5CA5-4896-B8E9-2B98B17BAC01}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sequences", "Sequences\Sequences.csproj", "{D2AFF70B-5CA5-4896-B8E9-2B98B17BAC01}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loading_Related_Data", "Loading_Related_Data\Loading_Related_Data.csproj", "{41DAF362-377D-44D0-937B-BC290A9DC6E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Loading_Related_Data", "Loading_Related_Data\Loading_Related_Data.csproj", "{41DAF362-377D-44D0-937B-BC290A9DC6E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lazy_Loading", "Lazy_Loading\Lazy_Loading.csproj", "{627ACBAD-8B9E-472F-96EC-99AB50864D16}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -153,6 +155,10 @@ Global
 		{41DAF362-377D-44D0-937B-BC290A9DC6E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{41DAF362-377D-44D0-937B-BC290A9DC6E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{41DAF362-377D-44D0-937B-BC290A9DC6E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{627ACBAD-8B9E-472F-96EC-99AB50864D16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{627ACBAD-8B9E-472F-96EC-99AB50864D16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{627ACBAD-8B9E-472F-96EC-99AB50864D16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{627ACBAD-8B9E-472F-96EC-99AB50864D16}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
