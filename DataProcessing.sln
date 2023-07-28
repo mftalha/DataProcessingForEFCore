@@ -53,7 +53,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Loading_Related_Data", "Loa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lazy_Loading", "Lazy_Loading\Lazy_Loading.csproj", "{627ACBAD-8B9E-472F-96EC-99AB50864D16}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Complex_Relational_Queries", "Complex_Relational_Queries\Complex_Relational_Queries.csproj", "{B1C902CF-22E2-48B0-8265-99D5753B75B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Complex_Relational_Queries", "Complex_Relational_Queries\Complex_Relational_Queries.csproj", "{B1C902CF-22E2-48B0-8265-99D5753B75B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sql_Queries", "Sql_Queries\Sql_Queries.csproj", "{814B1A1E-03B1-486E-9640-AEB3F61C8830}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -165,6 +167,10 @@ Global
 		{B1C902CF-22E2-48B0-8265-99D5753B75B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1C902CF-22E2-48B0-8265-99D5753B75B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1C902CF-22E2-48B0-8265-99D5753B75B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{814B1A1E-03B1-486E-9640-AEB3F61C8830}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{814B1A1E-03B1-486E-9640-AEB3F61C8830}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{814B1A1E-03B1-486E-9640-AEB3F61C8830}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{814B1A1E-03B1-486E-9640-AEB3F61C8830}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
