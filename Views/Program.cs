@@ -121,3 +121,21 @@ public class ViewDbContext : DbContext
         }
     }
  */
+
+
+/* Db'de Veiw 
+ -- view oluşturma
+Create VIEW vm_PersonOrders
+As
+	select Top 100 p.Name, Count(*) [Count] from persons p
+	inner join Orders o
+		ON p.PersonId = o.PersonId
+	group by p.Name
+	Order by [Count] Desc
+
+-- view'i silme
+DROP VIEW vm_PersonOrders
+
+-- view sorgulama 
+select * from vm_PersonOrders
+*/
