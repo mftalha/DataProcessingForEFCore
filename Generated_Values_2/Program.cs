@@ -6,7 +6,7 @@ using System.Reflection.Emit;
 
 Console.WriteLine("Hello, World!");
 
-GeneratedValueDbContext context = new();
+GeneratedValue_2DbContext context = new();
 
 #region Generated Value Nedir ?
 // EF Core da üretilen değerler ile ilgili çeşitli modellerin ayrıntılarını yapılandırmamızı sağlayan bir konfigürasyondur.
@@ -104,7 +104,7 @@ public class Person
     public int PersonCode { get; set; }
 }
 
-public class GeneratedValueDbContext : DbContext
+public class GeneratedValue_2DbContext : DbContext
 {
     public DbSet<Person> Persons { get; set; }
 
