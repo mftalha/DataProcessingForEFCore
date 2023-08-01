@@ -8,6 +8,7 @@ ViewDbContext context = new();
 #region View Nedir ?
 // Oluşturduğumuz kompleks sorguları ihtiyaç durumlarında daha rahat bir şekilde kullanabilmek için basitleştiren bir veritabanı objesidir. 
 // proje rapoları için kullanılabiliyor.
+// bir tablo gibi kullanılır
 #endregion
 
 #region EF Core ile view kullanımı
