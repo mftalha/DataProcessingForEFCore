@@ -63,17 +63,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Views", "Views\Views.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stored_Procedures", "Stored_Procedures\Stored_Procedures.csproj", "{4BCEA05D-E0DD-47E8-8970-255B4691BDB3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Functions", "Functions\Functions.csproj", "{60D2B921-4CD9-4EF7-95F1-6DECDB9B92D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Functions", "Functions\Functions.csproj", "{60D2B921-4CD9-4EF7-95F1-6DECDB9B92D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdoNet", "AdoNet\AdoNet.csproj", "{8CFCCA50-D2E6-4954-910D-C2D44BFCBB41}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdoNet", "AdoNet\AdoNet.csproj", "{8CFCCA50-D2E6-4954-910D-C2D44BFCBB41}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeylessEntityTypes", "KeylesEntityTypes\KeylessEntityTypes.csproj", "{AACB747A-AF1F-4634-BC3C-01E28D6B0D3B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeylessEntityTypes", "KeylesEntityTypes\KeylessEntityTypes.csproj", "{AACB747A-AF1F-4634-BC3C-01E28D6B0D3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logging", "Logging\Logging.csproj", "{5261E367-CA0B-4A74-B41F-9BD33E1D3448}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logging", "Logging\Logging.csproj", "{5261E367-CA0B-4A74-B41F-9BD33E1D3448}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueryLog", "QueryLog\QueryLog.csproj", "{ED44D6B9-4F29-47B4-8E14-9FD13A53D70B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QueryLog", "QueryLog\QueryLog.csproj", "{ED44D6B9-4F29-47B4-8E14-9FD13A53D70B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueryTag", "QueryTag\QueryTag.csproj", "{D83E3515-2452-440B-BF32-C05B2518CF08}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QueryTag", "QueryTag\QueryTag.csproj", "{D83E3515-2452-440B-BF32-C05B2518CF08}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlobalQueryFilters", "GlobalQueryFilters\GlobalQueryFilters.csproj", "{072CF827-80A1-43A7-9662-1D432543EA81}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -225,6 +227,10 @@ Global
 		{D83E3515-2452-440B-BF32-C05B2518CF08}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D83E3515-2452-440B-BF32-C05B2518CF08}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D83E3515-2452-440B-BF32-C05B2518CF08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{072CF827-80A1-43A7-9662-1D432543EA81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{072CF827-80A1-43A7-9662-1D432543EA81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{072CF827-80A1-43A7-9662-1D432543EA81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{072CF827-80A1-43A7-9662-1D432543EA81}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
