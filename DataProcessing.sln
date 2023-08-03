@@ -81,9 +81,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OwnedEntitiesAndTableSplitt
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemporalTables", "TemprolTables\TemporalTables.csproj", "{AEC5C168-57FE-49C1-BDDE-3707553959B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Connection_Resiliency", "Connection_Resiliency\Connection_Resiliency.csproj", "{1DA7FBAD-55B8-4922-8B28-B9B2147905F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Connection_Resiliency", "Connection_Resiliency\Connection_Resiliency.csproj", "{1DA7FBAD-55B8-4922-8B28-B9B2147905F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataConcurrency", "DataConcurrency\DataConcurrency.csproj", "{2199E536-6A62-44B8-82C0-AA74E19DA964}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataConcurrency", "DataConcurrency\DataConcurrency.csproj", "{2199E536-6A62-44B8-82C0-AA74E19DA964}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Value_Conversions", "Value_Conversions\Value_Conversions.csproj", "{87BADB5A-C9C1-47FF-9641-5F507E8FBA6C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -255,6 +257,10 @@ Global
 		{2199E536-6A62-44B8-82C0-AA74E19DA964}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2199E536-6A62-44B8-82C0-AA74E19DA964}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2199E536-6A62-44B8-82C0-AA74E19DA964}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87BADB5A-C9C1-47FF-9641-5F507E8FBA6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87BADB5A-C9C1-47FF-9641-5F507E8FBA6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87BADB5A-C9C1-47FF-9641-5F507E8FBA6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87BADB5A-C9C1-47FF-9641-5F507E8FBA6C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
