@@ -75,11 +75,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QueryLog", "QueryLog\QueryL
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QueryTag", "QueryTag\QueryTag.csproj", "{D83E3515-2452-440B-BF32-C05B2518CF08}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlobalQueryFilters", "GlobalQueryFilters\GlobalQueryFilters.csproj", "{072CF827-80A1-43A7-9662-1D432543EA81}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GlobalQueryFilters", "GlobalQueryFilters\GlobalQueryFilters.csproj", "{072CF827-80A1-43A7-9662-1D432543EA81}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OwnedEntitiesAndTableSplitting", "OwnedEntitiesAndTableSplitting\OwnedEntitiesAndTableSplitting.csproj", "{79F71AF9-5748-4B83-8E72-C3FBC1475ED9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OwnedEntitiesAndTableSplitting", "OwnedEntitiesAndTableSplitting\OwnedEntitiesAndTableSplitting.csproj", "{79F71AF9-5748-4B83-8E72-C3FBC1475ED9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemporalTables", "TemprolTables\TemporalTables.csproj", "{AEC5C168-57FE-49C1-BDDE-3707553959B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemporalTables", "TemprolTables\TemporalTables.csproj", "{AEC5C168-57FE-49C1-BDDE-3707553959B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Connection_Resiliency", "Connection_Resiliency\Connection_Resiliency.csproj", "{1DA7FBAD-55B8-4922-8B28-B9B2147905F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -243,6 +245,10 @@ Global
 		{AEC5C168-57FE-49C1-BDDE-3707553959B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AEC5C168-57FE-49C1-BDDE-3707553959B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AEC5C168-57FE-49C1-BDDE-3707553959B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DA7FBAD-55B8-4922-8B28-B9B2147905F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DA7FBAD-55B8-4922-8B28-B9B2147905F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DA7FBAD-55B8-4922-8B28-B9B2147905F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DA7FBAD-55B8-4922-8B28-B9B2147905F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
