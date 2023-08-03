@@ -85,11 +85,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Connection_Resiliency", "Co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataConcurrency", "DataConcurrency\DataConcurrency.csproj", "{2199E536-6A62-44B8-82C0-AA74E19DA964}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Value_Conversions", "Value_Conversions\Value_Conversions.csproj", "{87BADB5A-C9C1-47FF-9641-5F507E8FBA6C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Value_Conversions", "Value_Conversions\Value_Conversions.csproj", "{87BADB5A-C9C1-47FF-9641-5F507E8FBA6C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction", "Transaction\Transaction.csproj", "{979602B1-E478-4F91-AE39-810AD27B7B60}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Transaction", "Transaction\Transaction.csproj", "{979602B1-E478-4F91-AE39-810AD27B7B60}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InMemoryDatabase", "InMemoryDatabase\InMemoryDatabase.csproj", "{1C43AB27-8590-4B6A-AFBB-F9C13394C804}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InMemoryDatabase", "InMemoryDatabase\InMemoryDatabase.csproj", "{1C43AB27-8590-4B6A-AFBB-F9C13394C804}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EfficientQuering", "SelectSorgularınıGüçlendirmeTeknikleri\EfficientQuering.csproj", "{CCADD469-0BE7-451D-BF84-8196A45B6C05}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -273,6 +275,10 @@ Global
 		{1C43AB27-8590-4B6A-AFBB-F9C13394C804}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C43AB27-8590-4B6A-AFBB-F9C13394C804}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C43AB27-8590-4B6A-AFBB-F9C13394C804}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCADD469-0BE7-451D-BF84-8196A45B6C05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCADD469-0BE7-451D-BF84-8196A45B6C05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCADD469-0BE7-451D-BF84-8196A45B6C05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCADD469-0BE7-451D-BF84-8196A45B6C05}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
