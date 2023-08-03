@@ -89,6 +89,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Value_Conversions", "Value_
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction", "Transaction\Transaction.csproj", "{979602B1-E478-4F91-AE39-810AD27B7B60}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InMemoryDatabase", "InMemoryDatabase\InMemoryDatabase.csproj", "{1C43AB27-8590-4B6A-AFBB-F9C13394C804}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -267,6 +269,10 @@ Global
 		{979602B1-E478-4F91-AE39-810AD27B7B60}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{979602B1-E478-4F91-AE39-810AD27B7B60}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{979602B1-E478-4F91-AE39-810AD27B7B60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C43AB27-8590-4B6A-AFBB-F9C13394C804}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C43AB27-8590-4B6A-AFBB-F9C13394C804}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C43AB27-8590-4B6A-AFBB-F9C13394C804}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C43AB27-8590-4B6A-AFBB-F9C13394C804}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
