@@ -97,6 +97,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFC_7NewBulkUpdateAndDelete
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFC7InjectingServicesIntoEntities", "EFC7InjectingServicesIntoEntities\EFC7InjectingServicesIntoEntities.csproj", "{0C2E97E8-EDAC-4FCD-92A8-5B9D2EAFE58A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCore7EntitySplitting", "EFCoreEntitySplitting\EFCore7EntitySplitting.csproj", "{DEAF0A35-3413-4241-9442-CFFC476E3B00}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -291,6 +293,10 @@ Global
 		{0C2E97E8-EDAC-4FCD-92A8-5B9D2EAFE58A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C2E97E8-EDAC-4FCD-92A8-5B9D2EAFE58A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C2E97E8-EDAC-4FCD-92A8-5B9D2EAFE58A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEAF0A35-3413-4241-9442-CFFC476E3B00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEAF0A35-3413-4241-9442-CFFC476E3B00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEAF0A35-3413-4241-9442-CFFC476E3B00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEAF0A35-3413-4241-9442-CFFC476E3B00}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
