@@ -14,7 +14,9 @@ public class MyDbContext : DbContext
 
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{
-		modelBuilder.Entity<MyEntity>().ToTable("MyEntity", "MySchema");
+		modelBuilder.HasDefaultSchema("MySchema"); // bütün tablolara Schema ismi atıyacaksam
+
+		//modelBuilder.Entity<MyEntity>().ToTable("MyEntity", "MySchema"); // belirli tabloya Schema ismi atıyacaksam
 	}
 }
 
